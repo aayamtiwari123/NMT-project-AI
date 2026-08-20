@@ -532,7 +532,22 @@ Sixth, the experiment uses a fixed maximum sequence length of 30 tokens. Sentenc
 
 ---
 
-# 16. Conclusion
+
+# 16. Final Result Summary
+
+| Criterion | Best Architecture | Value |
+|---|---|---:|
+| BLEU-4 | Bahdanau Attention | 24.564 |
+| Perplexity | Bahdanau Attention | 6.712 |
+| Mean Latency | Vanilla RNN | 3.385 ms |
+| Fewest Parameters | Vanilla RNN | 7,486,902 |
+
+The final interpretation should consider all three evaluation dimensions rather than selecting an architecture solely from its BLEU score.
+
+---
+
+
+# 17. Discussion and Conclusion
 
 This study provides a controlled comparison of four recurrent NMT architectures ranging from a Vanilla RNN baseline to attention-equipped GRU encoder-decoder models.
 
@@ -545,51 +560,3 @@ At the same time, attention introduces additional computational overhead. The ap
 Overall, the experiment demonstrates that architectural changes can materially affect NMT performance even when the dataset, vocabulary constraints, optimization strategy, and principal hyperparameters are held constant.
 
 ---
-
-# 17. Future Directions
-
-Several extensions would make the experimental study stronger:
-
-1. Replace the whitespace tokenizer with BPE or SentencePiece.
-2. Repeat the experiment across multiple random seeds.
-3. Report confidence intervals or bootstrap significance tests for BLEU.
-4. Evaluate chrF and COMET in addition to BLEU.
-5. Compare GRU and LSTM architectures independently.
-6. Add bidirectional encoders.
-7. Compare dot-product, general, and concat attention variants.
-8. Investigate beam-search decoding instead of greedy decoding.
-9. Analyze performance as a function of source sentence length.
-10. Evaluate the models on out-of-domain test data.
-11. Compare recurrent architectures against Transformer-based NMT.
-12. Conduct an explicit human evaluation of adequacy and fluency.
-
----
-
-# 18. Generated Artifacts
-
-The experiment generated the following artifacts:
-
-- `quantitative_results.csv`
-- `qualitative_translations.csv`
-- `experiment_config.json`
-- `loss_curves_all_models.png`
-- `test_bleu_comparison.png`
-- `inference_latency_comparison.png`
-- `bleu_vs_latency_tradeoff.png`
-- `bahdanau_attention_heatmap.png`
-- `luong_attention_heatmap.png`
-- `bahdanau_vs_luong_attention.png`
-- model checkpoints under `checkpoints/`
-
----
-
-# 19. Final Result Summary
-
-| Criterion | Best Architecture | Value |
-|---|---|---:|
-| BLEU-4 | Bahdanau Attention | 24.564 |
-| Perplexity | Bahdanau Attention | 6.712 |
-| Mean Latency | Vanilla RNN | 3.385 ms |
-| Fewest Parameters | Vanilla RNN | 7,486,902 |
-
-The final interpretation should consider all three evaluation dimensions rather than selecting an architecture solely from its BLEU score.
