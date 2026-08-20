@@ -143,6 +143,14 @@ The decoder was trained using teacher forcing, where the ground-truth target tok
 | **Bahdanau Attention** | 13,546,166 | **24.56** | **6.71** | 11.14 | 10.21 | 19.52 | 15.21 |
 | **Luong Attention** | 13,480,374 | 20.37 | 8.22 | 9.62 | 8.92 | 15.99 | 14.31 |
 
+### 📊 Artifact Verification & Results Access
+All underlying configuration settings, computed metrics, and generated evaluation artifacts are systematically stored within the repository structure:
+* **Structured Results:** Detailed data logs can be inspected inside the `results/` directory:
+  * Raw metrics table: `results/quantitative_results.csv`
+  * Qualitative text inspections: `results/qualitative_translations.csv`
+  * Saved configuration state: `results/experiment_config.json`
+* **Performance Plots:** Visual evaluation artifacts are archived under the `plots/` directory for direct review.
+
 ---
 
 ## 9. Qualitative Translation Assessment
@@ -155,7 +163,26 @@ The decoder was trained using teacher forcing, where the ground-truth target tok
 
 ---
 
-## 10. Discussion and Conclusion
+## 10. Visual Demonstrations & Generated Figures
+
+To provide rigorous empirical demonstration suitable for a formal research demonstration, the model tracking logs, loss convergence, and cross-attention mechanics have been visualized and saved as assets. You can inspect or reference the following figures directly from the `plots/` directory:
+
+### 10.1 Training Dynamics & Loss Convergence
+* **Loss Curves (`plots/loss_curves_all_models.png`):** Illustrates the multi-epoch training and validation loss progression across all four models, demonstrating convergence rates and stability under the shared schedule.
+* **BLEU Comparison (`plots/test_blues_comparison.png`):** Visualizes the performance gap on test BLEU scores across the recurrent baseline and attentional variants.
+
+### 10.2 Efficiency and Trade-off Analysis
+* **Latency Benchmarks (`plots/inference_latency_comparison.png`):** Compares mean, median, and tail latency profiles across architectures.
+* **Trade-off Frontier (`plots/bleu_vs_latency_trade_off.png`):** Mappings showing the precise cost-accuracy curve between inference latency and translation quality (BLEU).
+
+### 10.3 Attention Alignment Analysis
+To evaluate internal reasoning, alignment heatmaps track how source tokens correlate with target generation steps:
+* **Bahdanau Heatmap (`plots/bahdanau_attention_attention_heatmap.png` & `plots/bahdanau_vs_luong_attention.png`):** Displays the additive alignment distribution showing focused diagonal patterns for matching source-target sequences.
+* **Luong Heatmap (`plots/luong_attention_attention_heatmap.png`):** Displays the multiplicative dot-product attention alignment weights.
+
+---
+
+## 11. Discussion and Conclusion
 
 This study provides a controlled comparison of four recurrent NMT architectures. The measured results show that **Bahdanau Attention** achieved the highest BLEU score of **24.564** and the lowest perplexity of **6.712**. 
 
@@ -163,6 +190,6 @@ The findings illustrate the central motivation for attention: a fixed encoder re
 
 ---
 
-## 11. Reproducibility
+## 12. Reproducibility
 
 All experiments enforced strict determinism using fixed random seeds ($4$) across Python, NumPy, PyTorch CPU, and PyTorch CUDA alongside deterministic CUDA configurations. Results may vary slightly depending on specific hardware and library versions.
