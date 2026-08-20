@@ -144,41 +144,44 @@ The decoder was trained using teacher forcing, where the ground-truth target tok
 | **Luong Attention** | 13,480,374 | 20.37 | 8.22 | 9.62 | 8.92 | 15.99 | 14.31 |
 
 ### 📊 Artifact Verification & Results Access
-All underlying configuration settings, computed metrics, and generated evaluation artifacts are systematically stored within the repository structure:
-* **Structured Results:** Detailed data logs can be inspected inside the `results/` directory:
-  * Raw metrics table: `results/quantitative_results.csv`
-  * Qualitative text inspections: `results/qualitative_translations.csv`
-  * Saved configuration state: `results/experiment_config.json`
-* **Performance Plots:** Visual evaluation artifacts are archived under the `plots/` directory for direct review.
+All configuration settings and logs are stored in the repo:
+* **Structured Logs (`results/`):** 
+  * `results/quantitative_results.csv`
+  * `results/qualitative_translations.csv`
+  * `results/experiment_config.json`
 
 ---
 
-## 9. Qualitative Translation Assessment
+## 9. Visual Demonstrations & Generated Plots
+
+### 9.1 Training Dynamics & Loss Convergence
+Loss progression and BLEU evaluation across all models:
+
+![Loss Curves All Models](plots/loss_curves_all_models.png)
+![Test BLEU Comparison](plots/test_bleu_comparison.png)
+
+### 9.2 Efficiency & Trade-off Analysis
+Inference latency evaluations and the trade-off frontier between translation speed and accuracy:
+
+![Inference Latency Comparison](plots/inference_latency_comparison.png)
+![BLEU vs Latency Tradeoff](plots/bleu_vs_latency_tradeoff.png)
+
+### 9.3 Attention Alignment Analysis
+Visualizing source-target alignment weights via heatmaps:
+
+![Bahdanau vs Luong Attention](plots/bahdanau_vs_luong_attention.png)
+![Bahdanau Attention Heatmap](plots/bahdanau_attention_attention_heatmap.png)
+![Luong Attention Heatmap](plots/luong_attention_attention_heatmap.png)
+
+---
+
+## 10. Qualitative Translation Assessment
 
 | Complexity | English | Reference | Vanilla RNN | GRU Seq2Seq | Bahdanau Attention | Luong Attention |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Simple** | you won't need that. | vous n'en aurez pas besoin. | je ne suis pas | tu ne dois pas faire ça. | vous ne pas pas besoin de cela. | vous ne pas besoin de ça. |
 | **Complex** | tom has a warped sense of humor. | tom a un sens de l'humour tordu. | je ne suis pas | tom a une personnalité de | tom a une brève de de | tom a une barbe de l'humour. |
 | **Long** | she made me so angry on the telephone that i hung up on her. | elle m'a mise tellement en colère au téléphone que je lui ai raccroché au nez. | je ne suis pas | elle m'a dit que je devais acheter la veille de noël. | elle me fait tellement énervée dans ce que j'ai | elle m'a fait si près ce que j'ai entendu sur le |
-
----
-
-## 10. Visual Demonstrations & Generated Figures
-
-To provide rigorous empirical demonstration suitable for a formal research demonstration, the model tracking logs, loss convergence, and cross-attention mechanics have been visualized and saved as assets. You can inspect or reference the following figures directly from the `plots/` directory:
-
-### 10.1 Training Dynamics & Loss Convergence
-* **Loss Curves (`plots/loss_curves_all_models.png`):** Illustrates the multi-epoch training and validation loss progression across all four models, demonstrating convergence rates and stability under the shared schedule.
-* **BLEU Comparison (`plots/test_blues_comparison.png`):** Visualizes the performance gap on test BLEU scores across the recurrent baseline and attentional variants.
-
-### 10.2 Efficiency and Trade-off Analysis
-* **Latency Benchmarks (`plots/inference_latency_comparison.png`):** Compares mean, median, and tail latency profiles across architectures.
-* **Trade-off Frontier (`plots/bleu_vs_latency_trade_off.png`):** Mappings showing the precise cost-accuracy curve between inference latency and translation quality (BLEU).
-
-### 10.3 Attention Alignment Analysis
-To evaluate internal reasoning, alignment heatmaps track how source tokens correlate with target generation steps:
-* **Bahdanau Heatmap (`plots/bahdanau_attention_attention_heatmap.png` & `plots/bahdanau_vs_luong_attention.png`):** Displays the additive alignment distribution showing focused diagonal patterns for matching source-target sequences.
-* **Luong Heatmap (`plots/luong_attention_attention_heatmap.png`):** Displays the multiplicative dot-product attention alignment weights.
 
 ---
 
