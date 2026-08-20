@@ -1,0 +1,13 @@
+Complexity,Source,Reference,Model,Prediction
+Simple,you won't need that.,vous n'en aurez pas besoin.,Vanilla RNN,je ne suis pas
+Simple,you won't need that.,vous n'en aurez pas besoin.,GRU Seq2Seq,tu ne dois pas faire ça.
+Simple,you won't need that.,vous n'en aurez pas besoin.,Bahdanau Attention,vous ne pas pas besoin de cela.
+Simple,you won't need that.,vous n'en aurez pas besoin.,Luong Attention,vous ne pas besoin de ça.
+Complex,tom has a warped sense of humor.,tom a un sens de l'humour tordu.,Vanilla RNN,je ne suis pas
+Complex,tom has a warped sense of humor.,tom a un sens de l'humour tordu.,GRU Seq2Seq,tom a une personnalité de
+Complex,tom has a warped sense of humor.,tom a un sens de l'humour tordu.,Bahdanau Attention,tom a une brève de de
+Complex,tom has a warped sense of humor.,tom a un sens de l'humour tordu.,Luong Attention,tom a une barbe de l'humour.
+Long,she made me so angry on the telephone that i hung up on her.,elle m'a mise tellement en colère au téléphone que je lui ai raccroché au nez.,Vanilla RNN,je ne suis pas
+Long,she made me so angry on the telephone that i hung up on her.,elle m'a mise tellement en colère au téléphone que je lui ai raccroché au nez.,GRU Seq2Seq,elle m'a dit que je devais acheter la veille de noël.
+Long,she made me so angry on the telephone that i hung up on her.,elle m'a mise tellement en colère au téléphone que je lui ai raccroché au nez.,Bahdanau Attention,elle me fait tellement énervée dans ce que j'ai
+Long,she made me so angry on the telephone that i hung up on her.,elle m'a mise tellement en colère au téléphone que je lui ai raccroché au nez.,Luong Attention,elle m'a fait si près ce que j'ai entendu sur le
