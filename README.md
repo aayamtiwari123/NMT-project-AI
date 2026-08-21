@@ -187,9 +187,14 @@ Visualizing source-target alignment weights via heatmaps:
 
 ## 11. Discussion and Conclusion
 
-This study provides a controlled comparison of four recurrent NMT architectures. The measured results show that **Bahdanau Attention** achieved the highest BLEU score of **24.564** and the lowest perplexity of **6.712**. 
 
-The findings illustrate the central motivation for attention: a fixed encoder representation creates an information bottleneck for longer sequences, whereas attention permits the decoder to dynamically access source-side representations. Because attention introduces additional computational overhead, architecture selection ultimately depends on the desired balance between translation accuracy and inference speed.
+The result above demostrate clear improvements in the translation process as the model architecture becomes more capable of preserving information. The first model, the Vanilla RNN, got 1.031 BLEU, but replacing it with the second model, GRU, increased the score significantly to 13.326, showing the benefit of extra gated recurrent units. When we switched to the attention-based model, it produced a much larger improvement. Bahdanau Attention achieved a BLEU of 24.564 and a lower perplexity of 6.712, and Luong Attention achieved 20.370 BLEU and 8.225 perplexity.
+
+This improvement can be attributed to the introduction of an attention mechanism in attention-based models to dynamically access different encoder states during decoding instead of relying on a static fixed representation. Bahdanau performed better than Luong under the conditions of the experiment. For this dataset, Luong is ideal. The examples and attention heatmaps further support the numerical result, although such errors such as repetion, ommision, lexical substitutions, and grammatical mistakes were noticed. The results also showed a clear trade-off between accuracy and efficiency. Bahdanau Attention provided the best translation quality but required 11.135 ms per sentence, instead of Vanilla RNN, with the lowest mean interference of 3.385 ms per sentence. This is because attention introduces more complexity and computation at each step.
+
+
+In conclusion, the best architecture depends on the question itself or the problem presented. In this particular problem, attention-based models are preferable when translation quality is the priority, while simpler model like vanilla RNN can be considered for computational efficiency but overall, this experiment needs to reduce the fixed vector information bottleneck of ancient encoder and decoder models and significantly improve NMT performance. Here, the conclusions derived are true for this specific dataset and are not universal and should not be generalized.
+
 
 ---
 
